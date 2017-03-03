@@ -1,0 +1,139 @@
+#include <iostream>
+#include <conio.h>
+#include "stdlib.h"
+using namespace std;
+int digitos (int n);
+int digitosImpares (int n);
+int invertir(int n);
+bool primo (int n);
+int concatenar (int a, int b);
+void main()
+{
+	int opcion,a,r,b;
+
+	do{
+		system("cls");
+		cout<<"					MENU"<<endl;
+		cout<<"1. Funcion que cuenta los digitos de un numero"<<endl;
+		cout<<"2. Funcion que cuenta los digitos impares"<<endl;
+		cout<<"3. Funcion que invierte el numero"<<endl;
+		cout<<"4. Funcion que verifica si el numero es primo"<<endl;
+		cout<<"5. Concatenar dos numeros naturales"<<endl;
+		cout<<"0. Salir"<<endl;
+		cout<<"Opcion: ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: 
+			do{
+			cout<<"Ingrese un numero natural:  ";
+			cin>>a;
+			}while (a<=0);
+			r=digitos(a);
+			cout<<"La cantidad de digitos de "<<a<<" es: "<<r<<endl<<endl;
+			cout<<"Pulse <intro> para continuar...";
+			getch();break;
+		case 2:
+			do{
+			cout<<"Ingrese un numero natural:  ";
+			cin>>a;
+			}while (a<=0);
+			r=digitosImpares(a);
+			cout<<"La cantidad de digitos impares de "<<a<<" es: "<<r<<endl<<endl;
+			cout<<"Pulse <intro> para continuar...";
+			getch();break;
+		case 3:
+			do{
+			cout<<"Ingrese un numero natural:  ";
+			cin>>a;
+			}while (a<=0);
+			r=invertir(a);
+			cout<<"El numero inverso de "<<a<<" es: "<<r<<endl<<endl;
+			cout<<"Pulse <intro> para continuar...";
+			getch();break;
+		case 4:
+			do{
+			cout<<"Ingrese un numero natural:  ";
+			cin>>a;
+			}while (a<=0);
+			r=primo (a);
+			if(r==true)
+				cout<<"El numero "<<a<<" es primo"<<endl<<endl;
+			else
+				cout<<"El numero "<<a<<" no es primo"<<endl<<endl;
+			cout<<"Pulse <intro> para continuar...";
+			getch();break;
+		case 5:
+			do{
+			cout<<"Ingrese un numero natural:  ";
+			cin>>a;
+			}while (a<=0);
+			do{
+			cout<<"Ingrese otro numero natural:  ";
+			cin>>b;
+			}while (b<=0);
+			r=concatenar(a,b);
+			cout<<"El resultado de concatenar "<<a<<" y "<<b<<" es: "<<r<<endl<<endl;
+			cout<<"Pulse <intro> para continuar...";
+			getch();break;
+		}
+	}while(opcion>0);
+}
+int digitos (int n)
+{
+	int c=0;
+	while(n>0)
+	{
+		n=n/10;
+		c++;
+	}
+	return (c);
+}
+int digitosImpares (int n)
+{
+	int c=0;
+	while (n>0)
+	{
+		if (n%2 !=0)
+		{
+			c++;
+		}
+		n=n/10;
+	}
+	return (c);
+}
+int invertir(int n)
+{
+	int d,newNro=0;
+	while (n>0)
+	{
+		d=n%10;
+		newNro=(newNro*10)+d;
+		n=n/10;
+	}
+	return (newNro);
+}
+bool primo (int n)
+{
+	bool x=true;
+	for(int i=2;i<n;i++)
+	{
+		if(n%i==0)
+		{
+			x=false;
+		}
+	}
+	return (x);
+}
+int concatenar (int a, int b)
+{
+	int i=1,h,j;
+	h=b;
+	while(b>0)
+	{
+		b=b/10;
+		i=i*10;
+	}
+	j=(a*i)+h;
+	return (j);
+}
