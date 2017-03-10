@@ -1,0 +1,109 @@
+#include <conio.h>
+#include <iostream>
+#define MAX 100
+using namespace std;
+void cargar(int v[],int n);
+void mostrar (int v[],int n);
+void invertirVector (int v[],int n);
+void cargarSaltado(int v[],int n);
+int buscarMayor(int v[],int n);
+void eliminarMayor(int v[],int &n);
+void eliminarElMayor(int v[],int &n);
+void main()
+{
+	int v[MAX],n,r;
+	cout<<"Ingrese el tamano del vector: ";
+	cin>>n;
+	cargar(v,n);
+	eliminarElMayor(v,n);
+	mostrar(v,n);
+	getch();
+}
+void cargar(int v[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cin>>v[i];
+	}
+}
+void mostrar (int v[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout<<"v[ "<<i<<" ] = "<<v[i]<<endl;
+	}
+}
+void invertirVector (int v[],int n)
+{
+	int aux;
+	for (int i=0;i<(n/2);i++)
+	{
+		aux=v[i];
+		v[i]=v[n-1-i];
+		v[n-1-i]=aux;
+	}
+}
+void cargarSaltado(int v[],int n)
+{
+	int i,k=0,sube=0,baja=n-1;
+	for(i=1;i<=n;i++)
+	{
+		if(k==0)
+		{
+			v[sube++]=i;
+			k=1;
+		}
+		else
+		{
+			v[baja--]=i;
+			k=0;
+		}
+	}
+}
+int buscarMayor(int v[],int n)
+{
+	int may=v[0];
+	for (int i=0;i<n;i++)
+	{
+		if(v[i]>may)
+		{
+			may=v[i];
+		}
+	}
+	return (may);
+}
+void eliminarMayor(int v[],int &n)
+{
+	int r,j=0;
+	n=n-1;
+	for(int i=0;i<n;i++)
+	{
+		r=buscarMayor(v,n);
+		if (v[i]!=r)
+		{
+			v[j]=v[i];
+			j++;
+		}
+		if (v[i]==r)
+		{
+			v[j]=v[i+1];
+		}
+	}
+}
+void eliminarElMayor(int v[],int &n)
+{
+	int may=buscarMayor(v,n),k;
+	for(int i=0;i<n;i++)
+	{
+		if(v[i]==may)
+		{
+			for(k=i;k<n-1;k++)
+			{
+			v[k]=v[k+1];
+			}
+			n--;
+			i--;
+		}
+		
+	}
+}
