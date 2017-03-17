@@ -1,0 +1,102 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+void cargarA (int vecA[],int nA);
+void mostrarA (int vecA[],int nA);
+void cargarB (int vecB[],int nB);
+void mostrarB (int vecB[],int nB);
+void cargarC (int vecC[],int nC);
+void mostrarC (int vecC[],int nC);
+
+void main ()
+{
+	int a,b,vecA[100],vecB[100],vecC[100],c;
+	cout<<"VECTORES ORDENADOS"<<endl;
+	cout<< "introduzca el tamaño del primer vector: ";
+	cin>> a;
+    cargarA (vecA,a);
+	mostrarA ( vecA,a);
+	cout<< "introduzca el tamaño del segundo vector: ";
+	cin>> b;
+	cargarB (vecB,b);
+	mostrarB ( vecB,b);
+	cout<< "EL tercer vector sera: ";
+	c = a + b;
+	cout<< c;
+	cargarC (vecC,c);
+	mostrarC ( vecC,c);
+	getch();
+
+}
+
+void cargarA (int vecA[100],int nA)
+{
+	int i,mayA;
+	vecA[0] = mayA;
+	for (i=0;i<nA;i++)
+	{
+		cin>> vecA[i];
+		if (mayA>vecA[i])
+		{
+			vecA[i]=mayA;
+		}
+	}
+
+}
+void mostrarA (int vecA[100],int nA)
+{
+	int i;
+	for ( i=0; i<nA; i++)
+	{
+		cout<<" El vectorA["<<i<<"] es: "<<vecA[i];
+		cout<<endl;
+
+	}
+}
+void cargarB (int vecB[100],int nB)
+{
+	int i,mayB;
+	vecB[0] = mayB;
+	for (i=0;i<nB;i++)
+	{
+		cin>> vecB[i];
+		if (mayB>vecB[i])
+		{
+			vecB[i]=mayB;
+		}
+	}
+
+}
+void mostrarB (int vecB[100],int nB)
+{
+	int i;
+	for ( i=0; i<nB; i++)
+	{
+		cout<<" El vectorA["<<i<<"] es: "<<vecB[i];
+		cout<<endl;
+	}
+}
+void cargarC (int vecC[100],int &nC)
+{
+	int i,mayC;
+	vecC[0] = mayC;
+	for (i=0;i<nC;i++)
+	{
+		cin>> vecC[i];
+		if (mayC>vecC[i])
+		{
+			vecC[i]=mayC;
+		}
+	}
+
+}
+void mostrarC (int vecC[100],int &nC)
+{
+	int i;
+	for ( i=0; i<nC; i++)
+	{
+		cout<<" El vectorC["<<i<<"] es: "<<vecC[i];
+		cout<<endl;
+	}
+}
