@@ -1,0 +1,89 @@
+#include <iostream>
+#include <conio.h>
+#define MAX 100
+using namespace std;
+
+struct tvector{
+	int subvec[MAX];
+};
+void cargar (tvector vec[], int n);
+void mostrar (tvector vec[],int n);
+void invertirVector (int vector[],int n);
+void invertirVecVec (tvector vec[],int n);
+void invertirVecVecCompleto (tvector vec[],int n);
+void main()
+{
+	int n;
+	tvector vec[MAX];
+	cout<<"Nro de elementos?  ";
+	cin>>n;
+	cargar(vec,n);
+	mostrar(vec,n);
+	cout<<endl<<"************VECTOR INVERTIDO**************"<<endl;
+	invertirVecVecCompleto(vec,n);
+	mostrar(vec,n);
+	getch();
+}
+void cargar (tvector vec[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=0;j<n;j++)
+		{
+			cout<<"vector ["<<i<<"].subvector ["<<j<<"] = ";
+			cin>>vec[i].subvec[j];
+		}
+		cout<<endl;
+	}
+}
+void mostrar (tvector vec[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=0;j<n;j++)
+		{
+			cout<<vec[i].subvec[j]<<"  ";
+		}
+		cout<<"    ";
+	}
+}
+void invertirVector (int vector[],int n)
+{
+	int aux;
+	for(int i=0;i<(n/2);i++)
+	{
+		aux=vector[i];
+		vector[i]=vector[n-1-i];
+		vector[n-1-i]=aux;
+	}
+}
+void invertirVecVec (tvector vec[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		invertirVector(vec[i].subvec,n);
+	}
+}
+void invertirVecVecCompleto (tvector vec[],int n)
+{
+	tvector aux;
+	invertirVecVec(vec,n);
+	for (int i=0;i<n/2;i++)
+	{
+		aux=vec[i];
+		vec[i]=vec[n-1-i];
+		vec[n-1-i]=aux;
+	}
+}
+void burbuja (int vec[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=i;j<n;j++)
+		{
+			if 
+		}
+	}
+}
+
+	
