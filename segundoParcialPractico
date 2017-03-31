@@ -1,0 +1,69 @@
+#include <iostream>
+#include <conio.h>
+#define MAX 100
+struct tvector{
+	int subvec [MAX];
+};
+void cargar (tvector vec[],int n);
+void mostrar (tvector vec[],int n);
+void funcion (tvector[],int n,int vec[]);
+void mostrarVector (int vec[],int n);
+
+using namespace std;
+void main()
+{
+	int n,vec[MAX];
+	tvector vector[MAX];
+	cout<<"numero de elementos? ";
+	cin>>n;
+	cargar(vector,n);
+	mostrar(vector,n);
+	funcion(vector,n,vec);
+	cout<<endl<<endl<<"***************VECTOR*****************"<<endl;
+	mostrarVector(vec,n);
+	getch();
+}
+void mostrarVector (int vec[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout<<"Vector ["<<i<<"] = "<<vec[i]<<endl;
+	}
+}
+void cargar (tvector vec[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=0;j<n;j++)
+		{
+			cout<<"Vec ["<<i<<"].subvec["<<j<<"] = ";
+			cin>>vec[i].subvec[j];
+		}
+		cout<<endl;
+	}
+}
+void mostrar (tvector vec[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=0;j<n;j++)
+		{
+			cout<<vec[i].subvec[j]<<"  ";
+		}
+		cout<<"  ";
+	}
+}
+void funcion (tvector vec[],int n,int vector[])
+{
+	int s=0,k=0;
+	for (int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			s=s+vec[j].subvec[i];
+		}
+		vector[k]=s;
+		k++;
+		s=0;
+	}
+}
