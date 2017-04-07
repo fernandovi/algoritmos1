@@ -1,0 +1,114 @@
+#include <conio.h>
+#include <iostream>
+#include <string.h>
+#define MAX 100
+#define FIL 100
+#define COL 100
+using namespace std;
+struct tcadena{
+	char cad[FIL];
+};
+bool verifSiEsVocal(char car);
+int contarVocales (char cad[]);
+void invertir (char cad[]);
+void eliminarVocales(char cad[]);
+void cargarMatrizCadena (tcadena mat[FIL][COL], int n,int m);
+void mostrarMatrizCadena (tcadena mat[FIL][COL], int n,int m);
+void main()
+{
+	//int r;
+	//char cad[MAX];
+	//cout<<"Introducir cadena: "<<endl;
+	//gets(cad);
+	//r=contarVocales(cad);
+	//cout<<"Cantidad de vocales es: ";
+	//cout<<r;
+	//invertir(cad);
+	//eliminarVocales(cad);
+	//cout<<cad;
+	int n,m;
+	tcadena mat[FIL][COL];
+	cout<<"Numero de filas?";
+	cin>>n;
+	cout<<"Numero de columnas?";
+	cin>>m;
+	cargarMatrizCadena(mat,n,m);
+	mostrarMatrizCadena(mat,n,m);
+	getch();
+}
+bool verifSiEsVocal(char car)
+{
+	if (car=='a'||car=='e'||car=='i'||car=='o'||car=='u'||car=='A'||car=='E'||car=='I'||car=='O'||car=='U')
+	{
+		return (true);
+	}
+	else
+	{
+		return (false);
+	}
+}
+int contarVocales (char cad[])
+{
+	int n=strlen(cad),c=0;
+	for(int i=0;i<n;i++)
+	{
+		if (verifSiEsVocal(cad[i])==true)
+		{
+			c++;
+		}
+	}
+	return (c);
+}
+void invertir (char cad[])
+{
+	char aux;
+	int n=strlen(cad);
+	for (int i=0;i<n/2;i++)
+	{
+		aux=cad[i];
+		cad[i]=cad[n-1-i];
+		cad[n-1-i]=aux;
+	}
+}
+void eliminarVocales(char cad[])
+{
+	int n=strlen(cad);
+	for (int i=0;i<n;i++)
+	{
+		if (verifSiEsVocal(cad[i])==true)
+		{
+			for(int j=i;j<n-1;j++)
+			{
+				cad[j]=cad[j+1];
+			}
+			i--;
+			n--;
+		}
+	}
+	cad[n]='\0';
+}
+void cargarMatrizCadena (tcadena mat[FIL][COL], int n,int m)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=0;j<m;j++)
+		{
+			cout<<"Introducir cadena: "<<endl;
+			do{
+			gets(mat[i][j].cad);
+			}while(strlen(mat[i][j].cad)==0);
+		}
+		cout<<endl;
+	}
+}
+void mostrarMatrizCadena (tcadena mat[FIL][COL], int n,int m)
+{
+	for (int i=0;i<n;i++)
+	{
+		for (int j=0;j<m;j++)
+		{
+			cout<<mat[i][j].cad<<"    ";
+		}
+		cout<<endl;
+	}
+}
